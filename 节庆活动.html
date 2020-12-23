@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<script type="text/javascript" src="jquery/jquery-1.10.1.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="./css/bootstrap.css">
+        <link rel="stylesheet" href="./css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/huiDing.css"/>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				
+			}
+			.nav{
+				height: 110px;
+				background-color: darkblue;
+			}
+			.main{
+				width: 980px;
+				margin: 0 auto;
+				padding-top: 20px;
+				padding-bottom: 20px;
+				
+			}
+			.main_title{
+				height: 60px;
+				width: 980px;
+				background-color:#0062a5;
+				
+			}
+			h2{
+				line-height: 60px;
+				color:white;
+				font-size: 18px;
+				font-family: "微软雅黑";
+				padding-left: 20px;
+			}
+			
+			.main_news ul a{
+				height: 100px;
+				width: 980px;
+				float: left;
+			}
+			.main_news li{
+				height:120px;
+				margin: 30px auto;
+				list-style: none;
+				border-bottom: 1px dotted #ccc;
+			}
+			.main_news div{
+				height: 100px;
+				color: black;
+				float: left;
+			}
+			.main_news div h3{
+			
+    			padding-left: 18px;
+    			padding-top: 0;
+   			 	height: 100px;
+				color: black;
+				
+			}
+			
+			.clear{
+				clear: both;
+				display: block;
+				visibility: hidden;
+				overflow: hidden;
+				width: 0;
+				height: 0;
+				
+			}
+			.footer{
+				height: 290px;
+				background-color: rgba(42,42,42,0.9);
+			}
+			.footer-copyright a:hover{
+				opacity: 0.5;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<!-- 网站头部开始 -->
+    <div class="header">
+        <div class="tfun">
+            <div class="tfun_list">
+                <ul>
+                    <li class="lag_eng"><a href="#"></a></li>
+                    <li class="lag_jpn"><a href="#"></a></li>
+                    <li class="lag_kor"><a href="#"></a></li>
+                    <li class="lag_rus"><a href="#"></a></li>
+                    <li class="weather">
+                        <iframe width="220" scrolling="no" height="32" frameborder="0" allowtransparency="true"
+                            src="https://i.tianqi.com?c=code&id=26&color=%23FFFFFF&icon=1&py=xiamen&num=1&site=12"></iframe>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="header-wrapper">
+            <div class="cot">
+                <div class="hp">
+                    <h1>
+                        <a href="#"><img src="./img/logo.png" alt=""></a>
+                    </h1>
+                </div>
+                <div class="navRight">
+                    <ul>
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">厦门概况</a></li>
+                        <li><a href="#">旅游资讯</a></li>
+                        <li>
+                            <a href="#">景区</a>
+                            <ul class="secNav">
+                                <li><a href="#">5A级景区</a>
+                                </li>
+                                <li><a href="#">4A级景区</a>
+                                </li>
+                                <li><a href="#">3A级景区</a>
+                                </li>
+                                <li><a href="#">厦门新24景</a></li>
+                                <li><a href="#">文博科教</a>
+                                </li>
+                                <li><a href="#">遗产古迹</a>
+                                </li>
+                                <li><a href="#">主题乐园</a>
+                                </li>
+                                <li><a href="#">展览场馆</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">线路</a>
+                            <ul class="secNav">
+                                <li><a href="#">金砖雅游</a></li>
+                                <li><a href="#">夜游厦门</a></li>
+                                <li><a href="#">鼓浪屿世界经典遗产</a></li>
+                                <li><a href="#">自驾游</a></li>
+                                <li><a href="#">周边游</a></li>
+                                <li><a href="#">其他线路</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">美食</a>
+                            <ul class="secNav">
+                                <li><a href="#">地道小食</a></li>
+                                <li><a href="#">海鲜排挡</a></li>
+                                <li><a href="#">养生素菜</a></li>
+                                <li><a href="#">私房佳肴</a></li>
+                                <li><a href="#">午茶晚茶</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">酒店</a>
+                            <ul class="secNav">
+                                <li><a href="#">5星级酒店</a></li>
+                                <li><a href="#">4星级酒店</a></li>
+                                <li><a href="#">3星级酒店</a></li>
+                                <li><a href="#">高级酒店</a></li>
+                                <li><a href="#">其他</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">购物</a>
+                            <ul class="secNav">
+                                <li><a href="#">时尚商圈</a></li>
+                                <li><a href="#">特色街区</a></li>
+                                <li><a href="#">地道伴手礼</a></li>
+                                <li><a href="#">离境退税政策</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">交通</a>
+                            <ul class="secNav">
+                                <li><a href="#" target="_blank">轮船时刻</a></li>
+                                <li><a href="#" target="_blank">飞机航班</a></li>
+                                <li><a href="#" target="_blank">列车时刻</a></li>
+                                <li><a href="#" target="_blank">长途汽车</a></li>
+                                <li><a href="#" target="_blank">市区公交</a></li>
+                                <li><a href="#" target="_blank">BRT交通指南</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">全域推广联盟</a></li>
+                        <li><a href="#">发现金门</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 网站头部结束 -->
+		<div class="main">
+			<div class="main_title">
+				<h2>节庆活动</h2>
+			</div>
+			<div class="main_news">
+				<ul >
+					<li>
+						<a href="#" target="_blank">
+							<img src="img/节庆活动/lzs.jpg" width="160" height="100" style="float: left;"/>
+							<div class="" >
+								<h3>厦门国际陈嘉庚杯龙舟赛</h3>
+								<span> </span>
+							</div>
+					    </a>
+					</li>
+					<li>
+						<a href="#" target="_blank">
+							<img src="img/节庆活动/马拉松.jpg" width="160" height="100" style="float: left;"/>
+							<div class="" >
+								<h3>厦门马拉松</h3>
+								<span> </span>
+							</div>
+					    </a>
+					</li>
+					<li>
+						<a href="#" target="_blank">
+							<img src="img/节庆活动/中秋节.jpeg" width="160" height="100" style="float: left;"/>
+							<div class="" >
+								<h3>中国厦门中秋旅游嘉年华</h3>
+								<span> </span>
+							</div>
+					    </a>
+					</li>
+					<li>
+						<a href="#" target="_blank">
+							<img src="img/节庆活动/钢琴节.jpg" width="160" height="100" style="float: left;"/>
+							<div class="" >
+								<h3>鼓浪屿国际钢琴艺术节</h3>
+								<span> </span>
+							</div>
+					    </a>
+					</li>
+					<li>
+						<a href="#" target="_blank">
+							<img src="img/节庆活动/文化节.jpg" width="160" height="100" style="float: left;"/>
+							<div class="" >
+								<h3>海峡两岸（厦门海沧）保生慈济文化节</h3>
+								<span> </span>
+							</div>
+					    </a>
+					</li>
+					<li>
+						<a href="#" target="_blank">
+							<img src="img/节庆活动/富德文化节.jpg" width="160" height="100" style="float: left;"/>
+							<div class="" >
+								<h3>福德文化节</h3>
+								<span> </span>
+							</div>
+					    </a>
+					</li>
+					<li>
+						<a href="#" target="_blank">
+							<img src="img/节庆活动/龙舟文化节.jpg" width="160" height="100" style="float: left;"/>
+							<div class="" >
+								<h3>海峡两岸（集美）龙舟文化节</h3>
+								<span> </span>
+							</div>
+					    </a>
+					</li>
+					<li>
+						<a href="#" target="_blank">
+							<img src="img/节庆活动/郑成功.jpg" width="160" height="100" style="float: left;"/>
+							<div class="" >
+								<h3>郑成功文化旅游节</h3>
+								<span> </span>
+							</div>
+					    </a>
+					</li>
+					<li>
+						<a href="#" target="_blank">
+							<img src="img/节庆活动/南阳文化节.jpg" width="160" height="100" style="float: left;"/>
+							<div class="" >
+								<h3>南洋文化节暨竹坝南洋风情旅游嘉年华</h3>
+								<span> </span>
+							</div>
+					    </a>
+					</li>
+					<li>
+						<a href="#" target="_blank">
+							<img src="img/节庆活动/庙会.jpg" width="160" height="100" style="float: left;"/>
+							<div class="" >
+								<h3>香山岩庙会</h3>
+								<span> </span>
+							</div>
+					    </a>
+					</li>
+				</ul>
+				
+			</div>
+			<div class="huiding">
+			    <a href="#" style="text-decoration: none; color: white;">顶部</a>
+		    </div>
+			<div class="clear"></div>
+			<div class=""style="padding-top: 25px; text-align: center;">
+				<span>当前第<b>1</b>页&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;共<b>1</b>页</span>
+			</div>
+		</div>
+		<div class="footer">
+			<div class="row container" style="padding-top: 20px; margin: 0 auto;">
+				<div class="footer_left " style="color: white; float: left;border-right: 1px solid rgba(255,255,255,0.3);padding-right: 250px; margin-left: 140px;">
+				     <h1>厦门旅游网</h1>
+				     <span>厦门市文化和旅游局</span><br />
+				     <span>文旅宣传推广官方网站</span><br />
+				     <span>全国十佳旅游目的地网站</span><br />
+				</div>
+				
+				<div class="footer_right " style="color: lightskyblue; float: right; margin-right: 340px;">
+				      <h3 >联系我们</h3>
+				      <span>&gt;</span>&nbsp;<img src="img/节庆活动/邮件图标.png"/>&nbsp;<span style="color: rgba(255,255,255,0.6);">contact@visitxm.com</span>
+				</div>
+			</div>
+			<div class="clear"></div>
+			
+			<div class="" style="border-top:2px solid #000000;border-bottom:2px solid #494949;width: 980px;margin: 20px auto;"></div>
+		    <!--<ul style="border-bottom:1px solid #777;">
+		    	<li style="border-bottom:1px solid #fff;"></li>
+		    </ul>-->
+		    <div class="footer-copyright" style="margin: 5px auto;text-align: center;color: white;">
+		    	<span style="opacity: 0.5;">闽ICP备06013218号-2, Copyright © 2020 All Right Reserved,</span><a href="#" style="text-decoration: none;color:white ;"> visitxm.com</a>
+		    </div>
+		</div>
+		
+	</body>
+</html>

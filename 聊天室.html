@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <script src="jquery/jquery-1.10.1.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./css/chat.css">
+    <title>Document</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        .comment {
+            position: relative;
+            background: #fff;
+            border: 1px solid #DDD;
+            border-radius: 5px;
+            width: 98%;
+        }
+
+        .comment h3 {
+            height: 28px;
+            line-height: 28px
+        }
+
+        .com_form {
+            width: 100%;
+            position: relative
+        }
+
+        .input {
+            width: 100%;
+            border-radius: 4px;
+            height: 60px;
+            resize: none;
+        }
+
+        .com_form p {
+            height: 28px;
+            line-height: 28px;
+            position: relative;
+            margin-top: 10px;
+        }
+
+        span.emotion {
+            width: 42px;
+            height: 20px;
+            padding-left: 20px;
+            cursor: pointer
+        }
+
+        span.emotion:hover {
+            background-position: 2px -28px
+        }
+
+        .qqFace {
+            margin-top: 4px;
+            background: #fff;
+            padding: 2px;
+            border: 1px #dfe6f6 solid;
+        }
+
+        .qqFace table td {
+            padding: 0px;
+        }
+
+        .qqFace table td img {
+            cursor: pointer;
+            border: 1px #fff solid;
+        }
+
+        .qqFace table td img:hover {
+            border: 1px #0066cc solid;
+        }
+
+        .show {
+            margin: 20px auto;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #DDD;
+            vertical-align: top;
+        }
+
+        .chatItem-time {
+            font-size: 2px;
+            color: #ccc;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .sub_btn {
+            position: absolute;
+            right: 0px;
+            top: 0;
+            display: inline-block;
+            zoom: 1;
+            /* zoom and *display = ie7 hack for display:inline-block */
+            *display: inline;
+            vertical-align: baseline;
+            margin: 0 2px;
+            outline: none;
+            cursor: pointer;
+            text-align: center;
+            font: 14px/100% Arial, Helvetica, sans-serif;
+            padding: .5em 2em .55em;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, .6);
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+            -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+            color: #e8f0de;
+            border: solid 1px #538312;
+            background: #64991e;
+            background: -webkit-gradient(linear, left top, left bottom, from(#7db72f), to(#4e7d0e));
+            background: -moz-linear-gradient(top, #7db72f, #4e7d0e);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7db72f', endColorstr='#4e7d0e');
+        }
+
+        .sub_btn:hover {
+            background: #538018;
+            background: -webkit-gradient(linear, left top, left bottom, from(#6b9d28), to(#436b0c));
+            background: -moz-linear-gradient(top, #6b9d28, #436b0c);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6b9d28', endColorstr='#436b0c');
+        }
+    </style>
+</head>
+
+<body>
+    <div class="chatBox">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                欢迎来到厦门
+            </div>
+            <div class="panel-body">
+                <div class="body-left">
+                    <ul class="list-group list-group-item-success">
+                        <li class="list-group-item">购票客服</li>
+                        <li class="list-group-item">线路客服</li>
+                        <li class="list-group-item">风景客服</li>
+                        <li class="list-group-item">资讯客服</li>
+                        <li class="list-group-item"><a href="./首页.html">回到首页</a></li>
+                    </ul>
+                </div>
+                <div class="body-right">
+                    <div class="chat-content">
+                    </div>
+                    <div class="chat-footer">
+                        <div class="comment">
+                            <div class="com_form">
+                                <textarea class="input" id="saytext" name="saytext"></textarea>
+                                <p>
+                                    <input type="button" class="sub_btn" value="提交">
+                                    <span class="emotion">|ू･ω･` )</span></p>
+                            </div>
+                        </div>
+                    </div>
+</body>
+<script src="./js/chat.js"></script>
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.qqFace.js"></script>
+<script type="text/javascript">
+    $(function () {
+
+        $('.emotion').qqFace({
+
+            id: 'facebox',
+
+            assign: 'saytext',
+
+            path: 'arclist/' //表情存放的路径
+
+        });
+
+        //客服说的话
+        var ChineseStr =
+            "大家好，我是六六。花费了一周的时间终于写完了这篇js核心概念的汇总。创作的过程也是查缺补漏，希望大家也能有收获的。喜欢的给作者点个赞哦，创作不容易的。 系列预告 2.前端进阶必经之路（二）：前端必会的20个手写及算法 3.前端进阶必经之路（三）：前端必会的Vue的7大手写源码 备注 如有错误，请大家积极指出来，避免误导他人。（第一次写这么多字的文章，难免会有错误的）如有补充，告诉我，我会积极添加上来。我也是个小白，希望和大家一起学习进步。所以喷我的话，我也会喷回去的哦。如果不慎引入他人的文章片段，指出来我会添加原处的";
+        var ChineseStrArr = [];
+        for (var i = 0; i < ChineseStr.length; i++) {
+            ChineseStrArr.push(String(ChineseStr[i]))
+        };
+
+        function talk() {
+            var str = $("#saytext").val();
+            str = replace_em(str);
+            var myDate = new Date();
+            var year = myDate.getFullYear(),
+                month = parseInt(myDate.getMonth() + 1),
+                day = myDate.getDate(),
+                hour = myDate.getHours(),
+                min = myDate.getMinutes(),
+                sec = myDate.getSeconds(),
+                timeStr = year + "年" + month + "月" + day + "天" + hour + "点" + min + "分" + sec + "秒";
+            // 生成随机客服说的话
+            // 生成随机长度
+            var staffLength = parseInt(Math.random() * 200),
+                str2 = "";
+            // 随机挑选语言
+            for (var i = 0; i < staffLength; i++) {
+                str2 += ChineseStrArr[parseInt(Math.random() * staffLength)];
+            }
+
+            var htmlStr1 = "<div class='show col-xs-7' style='float:right'><div class='chatItem-time'>" +
+                timeStr + "</div>" + "<div class='chatItem-content bg-primary'>" + str + "</div>";
+            var waitInput = setTimeout(function () {
+                var htmlStr2 =
+                    "<div class='show col-xs-7' style='float:lefts'><div class='chatItem-time'>" +
+                    timeStr + "</div>" + "<div class='chatItem-content bg-warning'>" + str2 + "</div>";
+                $(".chat-content").append(htmlStr2);
+                $(".chat-content")[0].scrollTop = $(".chat-content")[0].scrollHeight
+            }, 1000)
+
+
+            $(".chat-content").append(htmlStr1);
+            $(".chat-content")[0].scrollTop = $(".chat-content")[0].scrollHeight
+            $("#saytext").val("");
+        };
+
+        $(".sub_btn").on("click", function () {
+            talk();
+        });
+        $(".com_form").on("keydown", function () {
+            if (event.keyCode == 13) {
+                talk();
+            }
+        });
+        //阻止enter的默认操作
+        $(".com_form")[0].addEventListener("keydown", function (event) {
+            event.preventDefault();
+        })
+
+    })
+
+    //查看结果
+
+    function replace_em(str) {
+
+        str = str.replace(/\</g, '&lt;');
+
+        str = str.replace(/\>/g, '&gt;');
+
+        str = str.replace(/\n/g, '<br/>');
+
+        str = str.replace(/\[em_([0-9]*)\]/g, '<img src="arclist/$1.gif" border="0" />');
+
+        return str;
+
+    }
+</script>
+
+</html>

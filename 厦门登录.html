@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			
+			body{
+				 background: url(img/bg.jpg) center top no-repeat;
+			}
+			.container{
+				margin: 50px auto;
+				display: block;
+				border-radius: 8px;
+			}
+			#tops{
+				font-family:"微软雅黑";
+				font-size: 18px;
+				text-align: center;
+				width: 120px;
+				margin: 10px auto;
+				cursor: pointer;
+				background-color: rgb(51,122,183);
+				border-radius: 4px;
+				color: white;
+			}
+			#ewm{
+				width: 240px;
+				height: 240px;
+				margin: 20px auto;
+				display: none;
+			}
+			#tops:hover{
+				background-color: rgb(40,96,144);
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<script type="text/javascript" src="jquery/jquery-1.10.1.min.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<script src="js/login.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div class="container" style="border:1px solid darkblue">
+		<h1 class="text-center">游客登录</h1>
+		<form class="form-horizontal">
+			<div class="form-group">
+				<label for="inputAdm" class="col-sm-4 control-label">账号：</label>
+				<div class="col-sm-5">
+					<input type="text" id="inputAdm" placeholder="请输入账号" 
+						class="form-control" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputPwd" class="col-sm-4 control-label">密码：</label>
+				<div class="col-sm-5">
+					<input type="password" id="inputPwd" placeholder="请输入密码" 
+						class="form-control" />
+				</div>
+			</div>
+			<div class="form-group text-center">
+				<input type="button" id="login" class="btn btn-primary" value="登录" />
+			    <input type="button" id="reg" class="btn btn-primary" value="注册" />
+			</div>
+		    <p id="tops">二维码登录</p>
+		    <div id="ewm"><img src="img/二维码.jpg" width="240px"/></div>
+		</form>
+	</body>
+</html>

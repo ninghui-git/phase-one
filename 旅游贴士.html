@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="UTF-8">
+    <meta name="keywords" content="厦门旅游网,厦门旅游攻略,厦门旅游心得,厦门,旅游">
+    <meta name="description"
+        content="厦门市文化和旅游局文旅宣传推广官方网站,厦门旅游网提供多方位厦门旅游产品,厦门周边自驾游线路,周边旅游景点推荐,还包括更多厦门和周边游玩攻略,美食,交通,线路,住宿等旅游信息;,厦门旅游攻略,厦门旅游心得,厦门,旅游">
+    <title>厦门旅游网</title>
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <script src="./jquery/jquery-1.10.1.min.js"></script>
+    <script src="./js/bootstrap.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <style type="text/css">
+        body {
+            background-image: url("") !important;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .nav{
+            height: 100px;
+            background-color: darkblue;
+        }
+        .main_title{
+            width: 1230px;
+            height: 80px;
+            color: white;
+            padding-left: 20px;
+            
+            background-color: #0062a5;
+            margin:0 auto;
+        }
+        .main_title h2{
+            font-size: 18px;
+            font-family: "微软雅黑";
+            line-height: 80px;
+            
+        }
+        
+        .main_h {
+            width: 1150px;
+            margin: 25px auto;
+            font-size: 14px;
+            
+        }
+        .main_hk,.main_tielu,.main_Bus,.main_traffic,.main_Hire,.main_mingdan,.main_fuwuzhongxin,.main_zxzhongxin{
+            width: 1150px;
+            font-size: 18px;
+            padding-left: 40px;
+            background:url(img/旅游贴士/tit.png) no-repeat;
+        }
+        .traffic_Bus,.traffic_taxi,.traffic_Bike{
+            width:340px ;
+            height: 350px;
+            border: 1px solid rgb(205,205,205);
+            margin-bottom: 25px;
+        }
+        .clear{
+            
+            clear: both;
+            display: block;
+            visibility: hidden;
+            overflow: hidden;
+            width: 0;
+            height: 0;
+            
+        
+        }
+        .table-bordered td,.table-bordered th  {
+            border: 1px solid rgb(169,198,201) !important;
+        }
+        .main_tu{
+            width: 1230px;
+            height:350px;
+            margin: 0 auto;
+            /*overflow: hidden;*/
+            position: relative;
+            
+        }
+        #imgList{
+            list-style: none;
+            position: absolute;
+            top: 0;
+            left:0;
+            /*transition: all 2000ms ease;*/
+        }
+        #imgList li{
+            float: left;
+            
+        }
+        #navDiv{
+            position: absolute;
+            bottom: 10px;
+            
+            
+        }
+        #navDiv a{
+            float: left;
+            width: 20px;
+            height: 20px;
+            background-color: green;
+            margin: 0 10px;
+            opacity: 0.5;
+            
+        }
+        #navDiv a:hover{
+            background-color: #CCCCCC;
+        }
+    </style>
+    <script type="text/javascript">
+    
+    
+    window.onload=function(){
+        function changeColor(id){
+            var trs=document.getElementById(id).getElementsByTagName("tr");
+            for (var i=0;i<trs.length;i++) {
+                if (i%2==0) {
+                trs[i].style.backgroundColor="rgb(212,227,229)";
+            } else{
+                trs[i].style.backgroundColor="rgb(195,221,224)";
+            }
+        }
+        }
+        
+        changeColor("mdb");
+        changeColor("fuwu");
+        changeColor("zx");
+        
+        var imgList=document.getElementById("imgList");
+        var imgArr=imgList.getElementsByTagName("img");
+        
+        imgList.style.width=1230*imgArr.length+"px";
+        
+        var navDiv=document.getElementById("navDiv");
+        var box=document.getElementById("box");
+        navDiv.style.left=(box.offsetWidth-navDiv.offsetWidth)/2+"px";
+        
+        var index=0;
+        var allA=navDiv.getElementsByTagName("a");
+        allA[index].style.backgroundColor="#CCCCCC";
+        
+        for (var i=0;i<allA.length;i++) {
+            allA[i].num=i;
+            allA[i].onclick=function(){
+                
+                
+                animate(imgList,"left",-1230*(this.num),30,function(){
+                    
+                    
+                });
+               setA();
+            }
+        }
+        changeImg();
+        
+        function setA(){
+            if (index >= imgArr.length-1) {
+                
+                
+                imgList.style.left=0;
+                index=0;
+            }
+            for (var j=0;j<allA.length;j++) {
+                    allA[j].style.backgroundColor="";
+                }
+                allA[index].style.backgroundColor="#ccc";
+        }
+        navDiv.onmouseover=function(){
+            clearInterval(timer);
+        }
+        navDiv.onmouseout=function(){
+            changeImg();
+        }
+        var timer;
+        function changeImg(){
+               timer=setInterval(function(){
+                index++;
+                
+                index %=imgArr.length;
+                //console.log(index);
+                //console.log(imgArr.length);
+                //imgList.style.left=-1230*index+"px";
+                animate(imgList,"left",-1230*index,20,function(){
+                    
+                    setA();
+                });
+                
+                
+                
+            },3000);
+        }
+        
+        function getStyle(element,attr){
+            return window.getComputedStyle? window.getComputedStyle(element,null)[attr]:
+            element.currentStyle[attr]||0;
+       }
+        
+        function animate(obj,attr,target,speed,callback){
+            clearInterval(obj.timer);
+            var current=parseInt(getStyle(obj,attr));
+            if (current > target) {
+                speed = -speed;
+                
+            }
+            obj.timer= setInterval(function(){
+                var oldValue=parseInt(getStyle(obj,attr));
+                var newValue=oldValue +speed;
+                
+                if ((speed<0 && newValue<target)||(speed>0 && newValue > target)) {
+                    newValue=target;
+                    
+                }
+                obj.style[attr]=newValue+"px";
+                
+                if (newValue==target) {
+                    obj.style[attr]=target+"px";
+                    
+                    clearInterval(obj.timer);
+                    callback();
+                    
+                }
+            },30);
+        }
+        
+        
+        
+        
+        
+        
+        
+    };
+    
+    
+    
+</script>
+</head>
+
+<body>
+    <!-- 网站头部开始 -->
+    <div class="header">
+        <div class="tfun">
+            <div class="tfun_list">
+                <ul>
+                    <li class="lag_eng"><a href="#"></a></li>
+                    <li class="lag_jpn"><a href="#"></a></li>
+                    <li class="lag_kor"><a href="#"></a></li>
+                    <li class="lag_rus"><a href="#"></a></li>
+                    <li class="weather">
+                        <iframe width="220" scrolling="no" height="32" frameborder="0" allowtransparency="true"
+                            src="https://i.tianqi.com?c=code&id=26&color=%23FFFFFF&icon=1&py=xiamen&num=1&site=12"></iframe>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="header-wrapper">
+            <div class="cot">
+                <div class="hp">
+                    <h1>
+                        <a href="#"><img src="./img/logo.png" alt="" id="index-logo"></a>
+                    </h1>
+                </div>
+                <div class="navRight">
+                    <ul>
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">厦门概况</a></li>
+                        <li><a href="#">旅游资讯</a></li>
+                        <li>
+                            <a href="#">景区</a>
+                            <ul class="secNav">
+                                <li><a href="#">5A级景区</a>
+                                </li>
+                                <li><a href="#">4A级景区</a>
+                                </li>
+                                <li><a href="#">3A级景区</a>
+                                </li>
+                                <li><a href="#">厦门新24景</a></li>
+                                <li><a href="#">文博科教</a>
+                                </li>
+                                <li><a href="#">遗产古迹</a>
+                                </li>
+                                <li><a href="#">主题乐园</a>
+                                </li>
+                                <li><a href="#">展览场馆</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">线路</a>
+                            <ul class="secNav">
+                                <li><a href="#">金砖雅游</a></li>
+                                <li><a href="#">夜游厦门</a></li>
+                                <li><a href="#">鼓浪屿世界经典遗产</a></li>
+                                <li><a href="#">自驾游</a></li>
+                                <li><a href="#">周边游</a></li>
+                                <li><a href="#">其他线路</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">美食</a>
+                            <ul class="secNav">
+                                <li><a href="#">地道小食</a></li>
+                                <li><a href="#">海鲜排挡</a></li>
+                                <li><a href="#">养生素菜</a></li>
+                                <li><a href="#">私房佳肴</a></li>
+                                <li><a href="#">午茶晚茶</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">酒店</a>
+                            <ul class="secNav">
+                                <li><a href="#">5星级酒店</a></li>
+                                <li><a href="#">4星级酒店</a></li>
+                                <li><a href="#">3星级酒店</a></li>
+                                <li><a href="#">高级酒店</a></li>
+                                <li><a href="#">其他</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">购物</a>
+                            <ul class="secNav">
+                                <li><a href="#">时尚商圈</a></li>
+                                <li><a href="#">特色街区</a></li>
+                                <li><a href="#">地道伴手礼</a></li>
+                                <li><a href="#">离境退税政策</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="./hotMap.html">交通</a>
+                            <ul class="secNav">
+                                <li><a href="#" target="_blank">轮船时刻</a></li>
+                                <li><a href="#" target="_blank">飞机航班</a></li>
+                                <li><a href="#" target="_blank">列车时刻</a></li>
+                                <li><a href="#" target="_blank">长途汽车</a></li>
+                                <li><a href="#" target="_blank">市区公交</a></li>
+                                <li><a href="#" target="_blank">BRT交通指南</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">全域推广联盟</a></li>
+                        <li><a href="#">发现金门</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="butterfly_container">
+        <!-- 蝴蝶开始 -->
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+            xml:space="preserve" xmlns:xml="http://www.w3.org/XML/1998/namespace" class="svg-defs">
+
+            <defs>
+
+
+                <pattern id='image' width="1" height="1" viewBox="0 0 100 100" preserveAspectRatio="none">
+
+                    <image xlink:href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/78881/pattern_141.gif" width="100"
+                        height="100" preserveAspectRatio="none">
+                    </image>
+
+                </pattern>
+
+
+                <g id="shape-butterfly-1">
+
+                    <path class="path" fill="" clip-rule="evenodd" d="M8.65,2.85c0.934-0.2,2.15-0.333,3.65-0.4c1.534-0.1,2.667-0.083,3.4,0.05
+		c1.533,0.267,3.45,0.767,5.75,1.5c2.466,0.8,4.35,1.617,5.65,2.45c2.066,1.2,3.883,2.383,5.45,3.55c2.567,2.1,4.35,3.8,5.35,5.1
+		l2.1,2.5c0.933,1.167,1.517,1.983,1.75,2.45c0.333,0.767,1.083,2.117,2.25,4.05c0.233,0.467,0.717,1.683,1.45,3.65
+		c0.733,2.067,1.2,3.45,1.4,4.15c0.467,1.733,0.917,3.767,1.35,6.1l0.4,3.85l-0.25-3.4c-0.6-5.967-1.267-10.25-2-12.85
+		c-0.733-2.434-2.167-5.467-4.3-9.1c-0.966-1.667-1.566-3-1.8-4c-0.233-0.933-0.1-1.267,0.4-1c1.3,0.733,2.917,3.867,4.85,9.4
+		c1.667,4.7,2.85,11.2,3.55,19.5c0.567,6.934,0.667,11.917,0.3,14.95l0.2,0.05c0.231,0,0.348-0.05,0.35-0.15v0.05l0.1,0.05v27.4
+		c-0.032-0.018-0.065-0.035-0.1-0.05v-0.05c-0.7,0.267-0.983,0.117-0.85-0.45c0.067-0.333,0.017-0.817-0.15-1.45
+		c-0.2-0.6-0.316-0.983-0.35-1.15l-0.5-1.65c-0.533-2.967-0.833-5.034-0.9-6.2c-0.1-1.533-0.133-2.4-0.1-2.6
+		c0-0.933,0.167-1.667,0.5-2.2c0.567-0.9,0.684-1.75,0.35-2.55c-0.167-0.367-0.367-0.6-0.6-0.7c-0.333-0.133-0.517,0.283-0.55,1.25
+		c-0.033,1.533-0.167,2.9-0.4,4.1c-0.1,2.3-0.267,3.684-0.5,4.15c-0.333,0.667-1.25,2.95-2.75,6.85c-1.167,2.8-2.233,4.817-3.2,6.05
+		c-0.9,1.2-1.583,2.1-2.05,2.7c-0.8,1-1.434,1.667-1.9,2c-2.067,1.333-3.633,2.067-4.7,2.2c-3.033,0.267-4.95,0.317-5.75,0.15
+		c-0.8-0.167-1.383-0.217-1.75-0.15c-0.533,0.1-1.033,0.45-1.5,1.05c-0.5,0.667-1.217,1.284-2.15,1.85
+		c-0.934,0.567-1.85,0.934-2.75,1.1c-2.467,0.433-4.45,0.25-5.95-0.55c-0.7-0.4-1.467-1.15-2.3-2.25c-0.6-0.867-1.033-1.567-1.3-2.1
+		c-0.267-0.667-0.483-1.483-0.65-2.45c-0.3-1.467-0.383-2.717-0.25-3.75c0.267-1.9,0.45-3.05,0.55-3.45
+		c0.233-1.233,0.566-2.333,1-3.3C9.25,77.45,9.767,76.4,10,76c0.667-1.233,1.55-2.583,2.65-4.05c1.1-1.434,2.184-2.583,3.25-3.45
+		c0.367-0.3,1.15-0.867,2.35-1.7c0.767-0.566,1.917-1.25,3.45-2.05c1.733-0.933,3.267-1.633,4.6-2.1
+		c2.133-0.733,4.534-1.467,7.2-2.2c0.467-0.1,1.517-0.3,3.15-0.6c0.967-0.233,0.4-0.4-1.7-0.5c-2.434-0.1-4.534-0.3-6.3-0.6
+		c-1.566-0.267-3.383-0.7-5.45-1.3c-2.8-0.8-4.467-1.317-5-1.55c-1.567-0.667-3.2-1.75-4.9-3.25c-1.733-1.533-3-3.1-3.8-4.7
+		c-0.533-1.067-0.967-2.434-1.3-4.1c-0.233-1.067-0.3-2.133-0.2-3.2c0.133-0.833,0.183-1.3,0.15-1.4v-0.6
+		c-2.467-3.233-3.983-5.433-4.55-6.6c-0.533-1.033-0.883-1.833-1.05-2.4c-0.3-0.867-0.466-1.85-0.5-2.95
+		c-0.033-2.367,0.034-4.117,0.2-5.25c0.3-1.034,0.483-1.8,0.55-2.3c0.167-0.867,0.034-1.533-0.4-2c-0.6-0.7-1.133-1.517-1.6-2.45
+		c-0.566-1.133-0.833-2.117-0.8-2.95c0.033-1.333,0.167-2.367,0.4-3.1c0.367-1.267,1.05-2.267,2.05-3
+		C4.417,4.25,6.483,3.317,8.65,2.85z" />
+                    <g>
+
+            </defs>
+        </svg>
+
+        <section class="background"></section>
+
+        <section class="scene3d">
+
+            <div class="butterfly_container">
+                <var class="rotate3d">
+                    <var class="scale">
+                        <var class="translate3d">
+                            <var class="translate3d-1">
+                                <figure class="butterfly">
+                                    <svg class="wing left" viewBox="0 0 50 100" class="icon shape-codepen">
+                                        <use class="left" xlink:href="#shape-butterfly-1"></use>
+                                    </svg>
+                                    <svg class="wing right" viewBox="0 0 50 100" class="icon shape-codepen">
+                                        <use class="left" xlink:href="#shape-butterfly-1"></use>
+                                    </svg>
+                                </figure>
+                            </var>
+                        </var>
+                    </var>
+                </var>
+            </div>
+
+            <div class="butterfly_container" style="margin-top: -150px; margin-left: 140px;
+              -webkit-animation-duration: 5s;
+              -moz-animation-duration: 5s;
+              -ms-animation-duration: 5s;
+              -o-animation-duration: 5s;
+              animation-duration: 5s;">
+                <var class="rotate3d">
+                    <var class="scale">
+                        <var class="translate3d">
+                            <var class="translate3d-1">
+                                <figure class="butterfly">
+                                    <svg class="wing left" viewBox="0 0 50 100" style="-webkit-animation-duration: .75s;
+                  -moz-animation-duration: .75s;
+                  -ms-animation-duration: .75s;
+                  -o-animation-duration: .75s;
+                  animation-duration: .75s;">
+                                        <use class="left" xlink:href="#shape-butterfly-1"></use>
+                                    </svg>
+                                    <svg class="wing right" viewBox="0 0 50 100" style="-webkit-animation-duration: .75s;
+                  -moz-animation-duration: .75s;
+                  -ms-animation-duration: .75s;
+                  -o-animation-duration: .75s;
+                  animation-duration: .75s;">
+                                        <use class="left" xlink:href="#shape-butterfly-1"></use>
+                                    </svg>
+                                </figure>
+                            </var>
+                        </var>
+                    </var>
+                </var>
+            </div>
+
+            <div class="butterfly_container scale_half" style="margin-top: -10px; margin-left: 50px;
+              -webkit-animation-duration: 5s;
+              -moz-animation-duration: 5s;
+              -ms-animation-duration: 5s;
+              -o-animation-duration: 5s;
+              animation-duration: 5s;">
+                <var class="rotate3d">
+                    <var class="scale">
+                        <var class="translate3d">
+                            <var class="translate3d-1">
+                                <figure class="butterfly">
+                                    <svg class="wing left" viewBox="0 0 50 100" style="-webkit-animation-duration: .75s;
+                  -moz-animation-duration: .75s;
+                  -ms-animation-duration: .75s;
+                  -o-animation-duration: .75s;
+                  animation-duration: .75s;">
+                                        <use class="left" xlink:href="#shape-butterfly-1"></use>
+                                    </svg>
+                                    <svg class="wing right" viewBox="0 0 50 100" style="-webkit-animation-duration: .75s;
+                  -moz-animation-duration: .75s;
+                  -ms-animation-duration: .75s;
+                  -o-animation-duration: .75s;
+                  animation-duration: .75s;">
+                                        <use class="left" xlink:href="#shape-butterfly-1"></use>
+                                    </svg>
+                                </figure>
+                            </var>
+                        </var>
+                    </var>
+                </var>
+            </div>
+
+            <div class="butterfly_container scale_half" style="margin-top: 20px;
+              -webkit-animation-duration: 20s;
+              -moz-animation-duration: 20s;
+              -ms-animation-duration: 20s;
+              -o-animation-duration: 20s;
+              animation-duration: 20s;">
+                <var class="rotate3d">
+                    <var class="scale">
+                        <var class="translate3d">
+                            <var class="translate3d-1">
+                                <figure class="butterfly">
+                                    <svg class="wing left" viewBox="0 0 50 100" style="-webkit-animation-duration: 1s;
+                  -moz-animation-duration: 1s;
+                  -ms-animation-duration: 1s;
+                  -o-animation-duration: 1s;
+                  animation-duration: 1s;">
+                                        <use class="left" xlink:href="#shape-butterfly-1"></use>
+                                    </svg>
+                                    <svg class="wing right" viewBox="0 0 50 100" style="-webkit-animation-duration: 1s;
+                  -moz-animation-duration: 1s;
+                  -ms-animation-duration: 1s;
+                  -o-animation-duration: 1s;
+                  animation-duration: 1s;">
+                                        <use class="left" xlink:href="#shape-butterfly-1"></use>
+                                    </svg>
+                                </figure>
+                            </var>
+                        </var>
+                    </var>
+                </var>
+            </div>
+
+            <div class="butterfly_container scale_half" style="margin-top: 100px; margin-left: 50px;
+              -webkit-animation-duration: 20s;
+              -moz-animation-duration: 20s;
+              -ms-animation-duration: 20s;
+              -o-animation-duration: 20s;
+              animation-duration: 20s;">
+                <var class="rotate3d">
+                    <var class="scale">
+                        <var class="translate3d">
+                            <var class="translate3d-1">
+                                <figure class="butterfly">
+                                    <svg class="wing left" viewBox="0 0 50 100" style="-webkit-animation-duration: 1.2s;
+                  -moz-animation-duration: 1.2s;
+                  -ms-animation-duration: 1.2s;
+                  -o-animation-duration: 1.2s;
+                  animation-duration: 1.2s;">
+                                        <use class="left" xlink:href="#shape-butterfly-1"></use>
+                                    </svg>
+                                    <svg class="wing right" viewBox="0 0 50 100" style="-webkit-animation-duration: 1.2s;
+                  -moz-animation-duration: 1.2s;
+                  -ms-animation-duration: 1.2s;
+                  -o-animation-duration: 1.2s;
+                  animation-duration: 1.2s;">
+                                        <use class="left" xlink:href="#shape-butterfly-1"></use>
+                                    </svg>
+                                </figure>
+                            </var>
+                        </var>
+                    </var>
+                </var>
+            </div>
+
+            <div class="butterfly_container scale_third" style="margin-top: 150px;
+              -webkit-animation-duration: 20s;
+              -moz-animation-duration: 20s;
+              -ms-animation-duration: 20s;
+              -o-animation-duration: 20s;
+              animation-duration: 20s;">
+                <var class="rotate3d">
+                    <var class="scale">
+                        <var class="translate3d">
+                            <var class="translate3d-1">
+                                <figure class="butterfly">
+                                    <svg class="wing left" viewBox="0 0 50 100" style="-webkit-animation-duration: .35s;
+                  -moz-animation-duration: .35s;
+                  -ms-animation-duration: .35s;
+                  -o-animation-duration: .35s;
+                  animation-duration: .35s;">
+                                        <use class="left" xlink:href="#shape-butterfly-1"></use>
+                                    </svg>
+                                    <svg class="wing right" viewBox="0 0 50 100" style="-webkit-animation-duration: .35s;
+                  -moz-animation-duration: .35s;
+                  -ms-animation-duration: .53s;
+                  -o-animation-duration: .35s;
+                  animation-duration: .35s;">
+                                        <use class="left" xlink:href="#shape-butterfly-1"></use>
+                                    </svg>
+                                </figure>
+                            </var>
+                        </var>
+                    </var>
+                </var>
+            </div>
+
+            <div class="butterfly_container scale_third" style="margin-top: -250px; margin-left: 300px; 
+              -webkit-animation-duration: 4s;
+              -moz-animation-duration: 4s;
+              -ms-animation-duration: 4s;
+              -o-animation-duration: 4s;
+              animation-duration: 4s;">
+                <var class="rotate3d">
+                    <var class="scale">
+                        <var class="translate3d">
+                            <var class="translate3d-1">
+                                <figure class="butterfly">
+                                    <svg class="wing left" viewBox="0 0 50 100" style="-webkit-animation-duration: .45s;
+                  -moz-animation-duration: .45s;
+                  -ms-animation-duration: .45s;
+                  -o-animation-duration: .45s;
+                  animation-duration: .45s;">
+                                        <use class="left" xlink:href="#shape-butterfly-1"></use>
+                                    </svg>
+                                    <svg class="wing right" viewBox="0 0 50 100" style="-webkit-animation-duration: .45s;
+                  -moz-animation-duration: .45s;
+                  -ms-animation-duration: .45s;
+                  -o-animation-duration: .45s;
+                  animation-duration: .45s;">
+                                        <use class="left" xlink:href="#shape-butterfly-1"></use>
+                                    </svg>
+                                </figure>
+                            </var>
+                        </var>
+                    </var>
+                </var>
+            </div>
+
+        </section>
+    </div>
+    <!-- 蝴蝶结束 -->
+
+    <!-- 网站头部结束 -->
+
+    <!-- 网站主题内容开始 -->
+    <!-- 右侧导航栏开始 -->
+    <div class="rightNav">
+        <a href="#" style="right:-110px">
+            <em>^</em>
+            回到顶部
+        </a>
+        <a href="#" style="right:-110px">
+            <em>1</em>
+            美丽厦门
+        </a>
+        <a href="#" style="right:-110px">
+            <em>2</em>
+            在线客服
+        </a>
+        <a href="#" style="right:-110px">
+            <em>3</em>
+            在线订票
+        </a>
+        <a href="#" style="right:-110px">
+            <em>4</em>
+            厦门旅游
+        </a>
+        <a href="#" style="right:-110px">
+            <em>6</em>
+            厦门文化
+        </a>
+        <a href="#" style="right:-110px">
+            <em>6</em>
+            厦门24景
+        </a>
+        <a href="#" style="right:-110px">
+            <em>7</em>
+            海鲜市场
+        </a>
+        <a href="#" style="right:-110px">
+            <em>8</em>
+            厦门特产
+        </a>
+        <a href="#" style="right:-110px">
+            <em>9</em>
+            感动厦门
+        </a>
+        <a href="#" style="right:-110px">
+            <em>10</em>
+            联系我们
+        </a>
+
+    </div>
+    <!-- 右侧导航栏结束 -->
+
+    <div class="main">
+			
+        <div class="main_title">
+            <h2>旅游贴士</h2>
+            
+        </div>
+        
+        <!--轮播图-->
+        <div class="main_tu" id="box" style="overflow: hidden;">
+            <ul id="imgList">
+                <li><img src="img/旅游贴士/tips_main.jpg" width="1230"height="350"/></li>
+                <li><img src="img/旅游贴士/2.jpg"  width="1230"height="350"/></li>
+                <li><img src="img/旅游贴士/3.jpg"  width="1230"height="350"/></li>
+                <li><img src="img/旅游贴士/4.jpg"  width="1230"height="350"/></li>
+                <li><img src="img/旅游贴士/5.jpg"  width="1230"height="350"/></li>
+                <li><img src="img/旅游贴士/tips_main.jpg" width="1230"height="350"/></li>
+            </ul>
+            <!--导航按钮-->
+            <div id="navDiv">
+                <a href="javascript:;"></a>
+                <a href="javascript:;"></a>
+                <a href="javascript:;"></a>
+                <a href="javascript:;"></a>
+                <a href="javascript:;"></a>
+                
+            </div>
+        </div>
+        
+        
+        
+        <div class="main_h">
+            <div class="main_hk">
+                <p>航空</p>
+            </div>
+            
+            <p >
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;厦门高崎国际机场已成为中国东南沿海重要的区域性航空枢纽，分T3、T4候机楼双楼运行，已形成覆盖中国大陆各主要城市及港、澳、台（台北、高雄、台中）地区
+                ，连接东南亚（马尼拉、新加坡、吉隆坡、胡志明、曼谷、暹粒、雅加达、巴厘岛、吴哥）、东北亚（首尔、济州、东京、大阪、宿务），通达欧（阿姆斯特丹）、
+                美（温哥华、西雅图）、澳（悉尼、墨尔本）三大洲的航线网络。目前，厦门机场已通航109个城市，其中国内83个，国际20个，地区6个；境内外航线182条，
+                其中境内航线145条，国际及地区航线37条；运营的航空公司有40家，其中，境内航空公司25家，境外航空公司15家。
+            </p>
+            <p >
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机场交通：厦门机场交通便利，除常见的公交车及的士外，还开通了多条空港快线
+                ，有机场往返轮渡、北站、五通、东渡、梧村汽车站、曾厝垵、漳州、海沧等的专线。候车地址：T3候机楼
+                ：空港快线候车室（国内到达层7号门西侧80米）；T4候机楼：空港快线候车处（国内到达层5号门对面）。
+                具体可咨询：0592-5708275
+            </p>
+        </div>
+        
+        <div class="main_h">
+            <div class="main_tielu">
+                <p>铁路</p>
+            </div>
+            
+            <p >
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;厦门是中国东南沿海的铁路枢纽城市，分厦门站及厦门北站双站运行。
+                旅客可通过“杭深线”、“龙厦线”“向莆线”等从厦门乘坐动车或高铁往返深圳、
+                上海、杭州、武汉、北京等主要国内城市及福建省内各城市。旅客可在www.12306.cn买到火车票。
+            </p>
+            
+        </div>
+        <div class="main_h">
+            <div class="main_Bus">
+                <p>环岛观光巴士</p>
+            </div>
+            
+            <p >
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;厦门旅游观光巴士是了解厦门最快的主要途径，而且比较舒适。
+                起点是湖滨南路金源大厦楼下，一个半小时左右环绕厦门岛，途经整条风景秀丽的环岛路，
+                会经过许多厦门的知名景点，如厦大、胡里山炮台、环岛路、曾厝垵、国际会展中心、观音山度假区、五缘湾等。
+            </p>
+            
+        </div>
+        <div class="main_h">
+            <div class="main_traffic">
+                <p>市内交通</p>
+            </div>
+            
+                    <div class="traffic_Bus" style="float: left; padding: 15px;">
+                        <div class="">
+                            <img src="img/旅游贴士/trans_bus.png" style="margin-left: 50px;"/>
+                        </div>
+                        <h4 style="text-align: center;">公交</h4>
+                        <p>厦门的公交网络发达，站点覆盖情况合理，票价低。全市绝大多数的景区点都有公交线路到达。除了普通公交外，厦门还有6条BRT线路，能方便快速到达目的地。公交具体线路可通过“掌上公交”、“车来了”等手机APP或电话968828查询。</p>	
+                    </div>
+                    <div class="traffic_taxi" style="position: absolute;left: 50%; margin:0 0 0 -170px;padding: 15px;">
+                        <div class="">
+                            <img src="img/旅游贴士/trans_taxi.png" style="margin-left: 50px;"/>
+                        </div>
+                        <h4 style="text-align: center;">的士</h4>
+                        <p>厦门面积不大，的士数量却很多，打个的士到各个景区游览，不失为一种经济、快速、便捷的交通方式。普通的士预约电话：0592-5320000；电召的士电话：968890。另外神州专车、滴滴打车等新兴打车方式在厦门也很受欢迎。</p>
+                    </div>
+                    <div class="traffic_Bike" style="float: right;padding: 15px;">
+                        <div class="">
+                            <img src="img/旅游贴士/trans_bicycle.png" style="margin-left: 50px;"/>
+                        </div>
+                        <h4 style="text-align: center;">自行车</h4>
+                        <p>厦门是一个适合慢行的城市，很多道路都有自行车专用道。除市政公共自行车外，ofo单车、摩拜单车、hello单车、小白单车等共享单车也为游客骑行厦门提供了多种选择。</p>
+                    </div>
+                    
+            
+            
+        </div>
+        <div class="clear"></div>
+        <div class="main_h">
+            <div class="main_Hire">
+                <p>旅游大巴\中巴\小汽车租赁</p>
+            </div>
+            <div class="table-responsive" >
+                <table class="table table-bordered table-striped table-hover table-responsive "  ">
+                    
+                    <tbody >
+                        <tr>
+                            <td>厦门航锦运输有限公司</td>
+                            <td>厦门峰度汽车服务有限公司</td>
+                        </tr>
+                        <tr>
+                            <td>厦门新雷汽车服务有限公司</td>
+                            <td>厦门市鑫陇汽车租赁有限公司</td>
+                        </tr>
+                        <tr>
+                            <td>厦门君来商贸有限公司</td>
+                            <td>厦门东汇鑫汽车服务有限公司</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+        <div class="main_h">
+            <div class="main_mingdan">
+                <p>厦门市旅游客运企业名单(部分)</p>
+            </div>
+            <div class="table-responsive" >
+                <table class="table table-bordered table-striped table-hover table-responsive " >
+                    <thead>
+                        <th>企业名称</th>
+                        <th>地址</th>
+                        <th>电话</th>
+                    </thead>
+                    <tbody id="mdb">
+                        <tr>
+                            <td>国旅旅运服务有限公司</td>
+                            <td>黄厝塔头社187号</td>
+                            <td>0592-5962669</td>
+                        </tr>
+                        <tr>
+                            <td>兴旅汽车运输有限公司</td>
+                            <td>东浦路98号之二十</td>
+                            <td>0592-5192244</td>
+                        </tr>
+                        <tr>
+                            <td>光大旅游运输有限公司</td>
+                            <td>环岛南路2687－13</td>
+                            <td>0592-5890821</td>
+                        </tr>
+                        <tr>
+                            <td>全发展旅游运输有限公司</td>
+                            <td>万寿路13号之6、7、8、9</td>
+                            <td>0592-5817589</td>
+                        </tr>
+                        <tr>
+                            <td>世纪假日旅游运输有限公司</td>
+                            <td>斗西路北段140号2楼202室</td>
+                            <td>0592-5143101</td>
+                        </tr>
+                        <tr>
+                            <td>特运交通国际旅行社有限公司</td>
+                            <td>湖滨南路57号金源大厦4楼</td>
+                            <td>0592-2201244</td>
+                        </tr>
+                        <tr>
+                            <td>海阔天空旅游运输有限公司</td>
+                            <td>兴隆路31号信宏大厦B座1205</td>
+                            <td>0592-5670775</td>
+                        </tr>
+                        <tr>
+                            <td>厦门航空国际旅行社有限公司</td>
+                            <td>埭辽路22号</td>
+                            <td>0592-5739280</td>
+                        </tr>
+                        <tr>
+                            <td>舫阳旅游客运有限公司</td>
+                            <td>莲前东路409号联丰大厦1006室</td>
+                            <td>0592-2105330</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">经营范围：省际（族游）包车客运</td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+          <div class="main_h">
+            <div class="main_fuwuzhongxin">
+                <p>厦门旅游集散服务中心</p>
+            </div>
+            <div class="table-responsive" >
+                <table class="table table-bordered  table-hover table-responsive " >
+                    <thead>
+                        <th>服务点名称</th>
+                        <th>地址</th>
+                        
+                    </thead>
+                    <tbody id="fuwu">
+                        <tr>
+                            <td>观音山总部服务点</td>
+                            <td>环岛东路观音山梦幻海岸10号</td>
+                        </tr>
+                        <tr>
+                            <td>厦大西村服务点</td>
+                            <td>思明区演武路厦门大学西校门对面</td>
+                        </tr>
+                        <tr>
+                            <td>邮轮中心服务点</td>
+                            <td>湖里区东渡邮轮码头2楼9号门旁</td>
+                        </tr>
+                        <tr>
+                            <td>和平码头服务点</td>
+                            <td>思明区鹭江道3号和平码头一楼117号单元</td>
+                        </tr>
+                        <tr>
+                            <td>塔头服务点</td>
+                            <td>思明区环岛路塔头村口</td>
+                        </tr>
+                        <tr>
+                            <td>胡里山服务点</td>
+                            <td>思明区环岛路胡里山炮台景区大门门口</td>
+                        </tr>
+                        <tr>
+                            <td>嵩屿服务点</td>
+                            <td>海沧区嵩屿码头</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+             <div class="main_h">
+            <div class="main_zxzhongxin">
+                <p>旅游咨询服务中心</p>
+            </div>
+            <div class="table-responsive" >
+                <table class="table table-bordered  table-hover table-responsive " >
+                    <thead>
+                        <th>名称</th>
+                        <th>地址</th>
+                        
+                    </thead>
+                    <tbody id="zx">
+                        <tr>
+                            <td>机场T3候机楼旅游咨询服务中心</td>
+                            <td>T3候机楼国内到达厅出站口</td>
+                        </tr>
+                        <tr>
+                            <td>机场T4候机楼旅游咨询服务中心</td>
+                            <td>T4候机楼到达厅出站口</td>
+                        </tr>
+                        <tr>
+                            <td>同安旅游咨询服务中心</td>
+                            <td>同安区梵天寺对面</td>
+                        </tr>
+                        
+                        
+                    </tbody>
+                </table>
+            </div>
+             
+        </div>
+    
+    
+</div></div></div>
+<div class="huiding">
+        <a href="#" style="text-decoration: none; color: white;">顶部</a>
+</div>
+    <!-- 网站主题内容结束 -->
+
+    <!-- 网站底部开始 -->
+    <div class="footer-wrapper">
+        <div class="footer-contain">
+            <div class="footer-nav">
+                <div class="col col1">
+                    <div class="col1-text">
+                        <h1>厦门旅游网</h1>
+                        <span>厦门市文化和旅游局</span><br>
+                        <span>文旅宣传推广官方网站</span><br>
+                        <span>全国十佳旅游目的地网站</span>
+                    </div>
+                    <div class="footer-qrcode">
+                        <img src="img/qrcode.jpg">
+                        <br>
+                        更多精彩内容请关注
+                        <br>
+                        厦门市文旅局官方微信
+                    </div>
+                </div>
+                <div class="col col2">
+                    <h3>www.visitxm.com</h3>
+                    <div class="sitemap">
+                        <ul>
+                            <li><a href="#">厦门概况</a></li>
+                            <li><a href="#">景区</a>
+                                <a href="#">线路</a>
+                                <a href="#">美食</a>
+                                <a href="#">酒店</a>
+                                <a href="#">购物</a>
+                                <a href="#">交通</a></li>
+                            <li><a href="#">会议展览</a>
+                            </li>
+                            <li><a href="#">旅游资讯</a>
+                            </li>
+                            <li><a href="#">全域推广联盟</a></li>
+                            <li><a href="#">节庆活动</a>
+                            </li>
+                            <li><a href="#">旅游线路</a>
+                            </li>
+                            <li><a href="#">发现金门</a></li>
+                            <li><a href="#">旅游攻略</a>
+                            </li>
+                            <li><a href="#">图片</a> <a href="#">视频</a></li>
+                            <li><a href="#">旅游贴士</a></li>
+                            <li><a href="#">厦门市文旅局官方微博</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col col3">
+                    <div class="custom-sidebar">
+                        <h3 class="custom-sidebar-title">联系我们</h3>
+                        <div class="gdl-recent-post-widget">
+                            <ul>
+                                <li><img src="img/ico_mail.png">contact@visitxm.com</li>
+                                <li style="height: 33px;"><img src="img/s1.png" alt=""
+                                        style="width: 180px; height: 100%;"></li>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="copyright-wrapper">
+                <div class="copyright-border"></div>
+                <div class="copyright-left">闽ICP备06013218号-2, Copyright © 2020 All Right Reserved, <a
+                        href="">visitxm.com</a></div>
+            </div>
+
+        </div>
+    </div>
+</body>
+<script src="./js/index.js"></script>
+<script src="./js/main.js"></script>
+
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #ccc;
+        }
+
+        .map {
+            position: relative;
+            width: 1536px;
+            height: 731px;
+            background: url(./img/厦门地图.png) no-repeat;
+            margin: 0 auto;
+        }
+
+        .city {
+            position: absolute;
+            top: 402px;
+            right: 381px;
+            color: #fff;
+        }
+
+        .city2 {
+            top: 83px;
+            right: 964px;
+        }
+
+        .city3 {
+            top: 196px;
+            right: 801px;
+        }
+
+        .city4 {
+            top: 541px;
+            right: 988px;
+        }
+
+        .city5 {
+            top: 384px;
+            right: 955px;
+
+        }
+
+        .city6 {
+            top: 300px;
+            right: 787px;
+        }
+
+        .city7 {
+            top: 184px;
+            right: 1294px;
+        }
+
+        .city8 {
+            top: 150px;
+            right: 381px;
+        }
+
+        .dotted {
+            width: 5px;
+            height: 5px;
+            background-color: rgb(241, 35, 35);
+            border-radius: 50%;
+        }
+
+        .city div[class^="pulse"] {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            ;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            width: 8px;
+            height: 8px;
+            box-shadow: 0 0 12px #e40a0a;
+            animation: pulse 1.2s linear infinite;
+        }
+
+        .city div.pulse2 {
+            animation-delay: 0.4s;
+        }
+
+        .city div.pulse2 {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes pulse {
+            0% {}
+
+            70% {
+
+                width: 40px;
+                height: 40px;
+                opacity: 1;
+            }
+
+            100% {
+                width: 70px;
+                height: 70px;
+                opacity: 0;
+            }
+        }
+    </style>
+    <title>交通热点图</title>
+</head>
+
+<body>
+    <div class="map">
+        <div class="city">
+            <div class="dotted"></div>
+            <div class="pulse1"></div>
+            <div class="pulse2"></div>
+            <div class="pulse3"></div>
+        </div>
+        <div class="city city2">
+            <div class="dotted"></div>
+            <div class="pulse1"></div>
+            <div class="pulse2"></div>
+            <div class="pulse3"></div>
+        </div>
+        <div class="city city3">
+            <div class="dotted"></div>
+            <div class="pulse1"></div>
+            <div class="pulse2"></div>
+            <div class="pulse3"></div>
+        </div>
+        <div class="city city4">
+            <div class="dotted"></div>
+            <div class="pulse1"></div>
+            <div class="pulse2"></div>
+            <div class="pulse3"></div>
+        </div>
+        <div class="city city5">
+            <div class="dotted"></div>
+            <div class="pulse1"></div>
+            <div class="pulse2"></div>
+            <div class="pulse3"></div>
+        </div>
+        <div class="city city6">
+            <div class="dotted"></div>
+            <div class="pulse1"></div>
+            <div class="pulse2"></div>
+            <div class="pulse3"></div>
+        </div>
+        <div class="city city7">
+            <div class="dotted"></div>
+            <div class="pulse1"></div>
+            <div class="pulse2"></div>
+            <div class="pulse3"></div>
+        </div>
+        <div class="city city8">
+            <div class="dotted"></div>
+            <div class="pulse1"></div>
+            <div class="pulse2"></div>
+            <div class="pulse3"></div>
+        </div>
+    </div>
+</body>
+
+</html>

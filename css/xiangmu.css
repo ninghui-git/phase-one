@@ -1,0 +1,282 @@
+
+
+/*整个div*/
+.all {
+    width: 1230px;
+    height: 428px;
+
+    /*居中处理*/
+    margin: 0 auto;
+}
+
+
+/*左半边整个div - 920*428 */
+.all-left {
+    display: inline-block;
+
+    width: 920px;
+    height: 428px;
+    /*测试*/
+    /*border: 1px solid deepskyblue;*/
+
+    margin-right: 16px;
+}
+
+/*head部分 - 920*60 */
+.linehead {
+    width: 100%;
+    height: 60px;
+    background-color: #2292DD;
+}
+
+.linehead h2 {
+    display: inline-block;
+    margin: 18px 80px 15px 20px;
+}
+
+.linehead h2 {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    /*字体加粗*/
+}
+
+/*5个同类a标签*/
+.linehead .as {
+    display: inline-block;
+}
+
+.linehead .as a {
+    display: inline-block;
+    height: 25px;
+    margin-right: 10px;
+    color: black;
+    font-size: 12px;
+    font-weight: 600;
+    /*字体加粗*/
+    text-decoration: none;
+    text-align: center;
+    line-height: 25px;
+
+}
+
+.linehead em a {
+    text-decoration: none;
+}
+
+/*分别设置宽度(高度 上面已经统一设置)*/
+.linehead #a1 {
+    width: 80px;
+    text-align: center;
+    background-color: #E7E708;
+    border-radius: 6px;
+    /*圆角*/
+}
+
+.linehead #a2 {
+    width: 80px;
+    text-align: center;
+    background-color: #00CCFF;
+    border-radius: 6px;
+    /*圆角*/
+}
+
+.linehead #a3 {
+    width: 160px;
+    text-align: center;
+    background-color: #57F031;
+    border-radius: 6px;
+    /*圆角*/
+}
+
+.linehead #a4 {
+    width: 65px;
+    text-align: center;
+    background-color: #1AE6E6;
+    border-radius: 6px;
+    /*圆角*/
+}
+
+.linehead #a5 {
+    width: 65px;
+    text-align: center;
+    background-color: #F570C0;
+    border-radius: 6px;
+    /*圆角*/
+}
+
+.linehead em {
+    display: inline-block;
+    font-size: 15px;
+    margin-left: 130px;
+}
+
+
+/*body部分 - 920*368 */
+.linebody {
+    width: 920px;
+    height: 368px;
+
+}
+
+/*body的左半边 - 287*368 */
+.linebody-left {
+    width: 287px;
+    height: 368px;
+    display: inline-block;
+    /*转化成行内块级元素*/
+}
+
+.linebody-left a,
+.linebody-right a {
+    /*去除下划线*/
+    text-decoration: none;
+}
+
+.linebody-left .left-text {
+    width: 267px;
+    height: 125px;
+    background-color: lightblue;
+    padding: 15px 10px 5px 10px;
+    /*让内容接近居中*/
+    /*border-right: 1px solid deeppink;*/
+}
+
+.linebody-left .left-img {
+    width: 287px;
+    height: 270px;
+}
+
+/*分别设置字体*/
+.linebody-left .left-text #h3 {
+    display: inline-block;
+    color: blue;
+    font-size: 25px;
+    margin-left: 10px;
+    margin-right: 8px;
+}
+
+.linebody-left .left-text #p1 {
+    display: inline-block;
+    color: black;
+    font-size: 15px;
+    font-weight: 550;
+}
+
+.linebody-left .left-text #p2 {
+    display: inline-block;
+    color: black;
+    font-size: 7px;
+    text-decoration: none;
+}
+
+/*body的右半边 - 633*368*/
+.linebody-right {
+    width: 633px;
+    height: 368px;
+    float: right;
+}
+
+.linebody-right .right {
+    width: 595px;
+    height: 342px;
+    margin: 7px;
+}
+
+.linebody-right a {
+    display: inline-block;
+    width: 595px;
+    height: 114px;
+}
+
+
+.linebody-right .right-one,
+.right-two,
+.right-three {
+    width: 595px;
+    height: 114px;
+    /*测试*/
+    /*border: 1px dashed gray; */
+}
+
+.linebody-right .right-one,
+.right-two {
+    /*前2个div的底部加虚线*/
+    border-bottom: 1px dashed gray;
+    /*隔开3个div之间的上下距离*/
+    margin-top: 2px;
+    margin-bottom: 3px;
+}
+
+.linebody-right img {
+    margin-top: 6px;
+}
+
+.linebody-right .div1,
+.div2,
+.div3 {
+    display: inline-block;
+    float: right;
+    /*右浮动 - 防止往下走*/
+    width: 420px;
+    height: 80px;
+    margin: 25px 0 0 14px;
+    /*调整位置*/
+    /*position: relative;*/
+}
+
+
+/*分别设置h3,p1,p2*/
+.linebody-right .h3 {
+    display: inline-block;
+    color: blue;
+    font-size: 20px;
+    margin-left: 15px;
+    margin-right: 6px;
+}
+
+.linebody-right .p1 {
+    color: black;
+    font-size: 12px;
+    font-weight: 550;
+
+}
+
+.linebody-right .p2 {
+    display: inline-block;
+    color: black;
+    font-size: 5px;
+    text-decoration: none;
+    /*position: absolute;*/
+}
+
+
+
+/*右半边 290*428*/
+.all-right {
+    float: right;
+    width: 275px;
+    overflow: hidden;
+    height: 428px;
+    /*测试*/
+    /*border: 1px solid gainsboro;*/
+}
+
+.all-right #img-r2 {
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+/*鼠标进入效果*/
+.linehead .as #a1:hover,
+#a2:hover,
+#a3:hover,
+#a4:hover,
+#a5:hover {
+    color: white;
+    background-color: blue;
+}
+
+.linehead em a:hover {
+    color: white;
+}
